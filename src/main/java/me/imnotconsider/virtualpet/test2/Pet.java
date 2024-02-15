@@ -1,24 +1,24 @@
 package me.imnotconsider.virtualpet.test2;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
-import java.util.Random;
 
 @Data
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class Pet {
-    private String type;
-    private int age;
-    private String favoriteFood;
-    private List<String> messages;
-    private String story;
+    @NonNull private String type;
+    @NonNull private int age;
+    @NonNull private String favoriteFood;
+    @NonNull private List<String> messages;
+    @NonNull private String story;
+    private int messageIndex = 0;
 
     public void sendRandomMessage() {
-        Random random = new Random();
-        int index = random.nextInt(messages.size());
-        System.out.println(messages.get(index));
+        System.out.println(type + " says: " + messages.get(messageIndex));
+        messageIndex = (messageIndex + 1) % messages.size();
     }
 
     public void tellStory() {
