@@ -40,7 +40,11 @@ public class ConnectionPool {
     }
 
     public void releaseConnection(Connection connection) {
-        connections.add(connection);
-        log.info("1 connection received. total connections: {}", connections.size());
+        try{
+            connections.put(connection);
+            log.info("1 connection received. total connections: {}", connections.size());
+        } catch (InterruptedException e) {
+            log.warn("log put error: {}", e.getMessage());
+        }
     }
 }
