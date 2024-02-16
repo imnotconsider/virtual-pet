@@ -1,19 +1,18 @@
-package me.imnotconsider.virtualpet.test2;
+package me.imnotconsider.virtualpet.test2.model.user;
 
+import lombok.Data;
+import lombok.Singular;
 import lombok.extern.log4j.Log4j2;
+import me.imnotconsider.virtualpet.test2.model.Pet;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Log4j2
+@Data
 public class User {
     private String name;
-    private final List<Pet> pets;
-
-    public User(String name) {
-        this.name = name;
-        this.pets = new ArrayList<>();
-    }
+    private final List<Pet> pets = new ArrayList<>();
 
     public void addPet(Pet pet) {
         pets.add(pet);
@@ -32,8 +31,8 @@ public class User {
 
     public void interactWithPets() {
         for (Pet pet : pets) {
-            pet.tellStory();
-            pet.sendRandomMessage();
+            pet.interact();
+
             try {
                 Thread.sleep(60000);
             } catch (InterruptedException e) {
