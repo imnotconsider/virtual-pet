@@ -1,4 +1,4 @@
-package me.imnotconsider.virtualpet.test2.model.user;
+package me.imnotconsider.virtualpet.test2.model;
 
 import lombok.Data;
 import lombok.Singular;

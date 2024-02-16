@@ -1,6 +1,6 @@
 package me.imnotconsider.virtualpet.test2.repository.user;
 
-import me.imnotconsider.virtualpet.test2.model.user.User;
+import me.imnotconsider.virtualpet.test2.model.User;
 
 import java.util.List;
 

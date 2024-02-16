@@ -1,7 +1,7 @@
 package me.imnotconsider.virtualpet;
 
 import me.imnotconsider.virtualpet.test2.model.Pet;
-import me.imnotconsider.virtualpet.test2.model.user.User;
+import me.imnotconsider.virtualpet.test2.model.User;
 import me.imnotconsider.virtualpet.test2.repository.pet.ImplPetRepository;
 import me.imnotconsider.virtualpet.test2.repository.pet.PetRepository;
 import me.imnotconsider.virtualpet.test2.repository.user.ImplUserRepository;
