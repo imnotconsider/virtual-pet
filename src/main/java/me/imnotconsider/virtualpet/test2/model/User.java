@@ -5,14 +5,16 @@ import lombok.extern.log4j.Log4j2;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 
 @Log4j2
 @Data
 public class User {
     private String name;
     private final List<Pet> pets = new ArrayList<>();
+    public static final ScheduledExecutorService EXECUTOR = Executors.newSingleThreadScheduledExecutor();
 
     public void addPet(Pet pet) {
         pets.add(pet);
@@ -30,10 +32,8 @@ public class User {
     }
 
     public void interactWithPets() {
-        ExecutorService executor = Executors.newFixedThreadPool(pets.size());
         for (Pet pet : pets) {
-            executor.execute(pet::interact);
+            EXECUTOR.schedule(pet::interact, 0, TimeUnit.MILLISECONDS);
         }
-        executor.shutdown();
     }
 }
