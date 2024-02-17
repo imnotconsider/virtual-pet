@@ -1,12 +1,12 @@
 package me.imnotconsider.virtualpet.test2.model;
 
 import lombok.Data;
-import lombok.Singular;
 import lombok.extern.log4j.Log4j2;
-import me.imnotconsider.virtualpet.test2.model.Pet;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Log4j2
 @Data
@@ -30,14 +30,10 @@ public class User {
     }
 
     public void interactWithPets() {
+        ExecutorService executor = Executors.newFixedThreadPool(pets.size());
         for (Pet pet : pets) {
-            pet.interact();
-
-            try {
-                Thread.sleep(60000);
-            } catch (InterruptedException e) {
-                log.warn("error: {}", e.getMessage());
-            }
+            executor.execute(pet::interact);
         }
+        executor.shutdown();
     }
 }

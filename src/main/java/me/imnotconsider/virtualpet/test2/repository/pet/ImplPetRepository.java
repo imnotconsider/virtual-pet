@@ -5,9 +5,10 @@ import me.imnotconsider.virtualpet.test2.model.Pet;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class ImplPetRepository implements PetRepository{
-    private final HashMap<String, Pet> pets = new HashMap<>();
+    private final Map<String, Pet> pets = new HashMap<>();
 
     @Override
     public void add(Pet pet) {
